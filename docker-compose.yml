@@ -1,0 +1,48 @@
+services:
+  service-a:
+    build: ./a-service
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    volumes:
+      - ./a-service:/app
+      - ./config:/config
+      - /app/node_modules
+    command: sh -c "npm install && npm start"
+
+  service-b:
+    build: ./b-service
+    ports:
+      - "3002:3002"
+    env_file:
+      - .env
+    volumes:
+      - ./b-service:/app
+      - ./config:/config
+      - /app/node_modules
+    command: sh -c "npm install && npm start"
+
+  service-x:
+    build: ./x-service
+    ports:
+      - "3003:3003"
+    env_file:
+      - .env
+    volumes:
+      - ./x-service:/app
+      - ./config:/config
+      - /app/node_modules
+    command: sh -c "npm install && npm start"
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./gateway:/app
+      - ./config:/config
+      - /app/node_modules
+    command: sh -c "npm install && npm start"
