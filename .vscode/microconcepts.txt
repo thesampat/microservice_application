@@ -1,0 +1,47 @@
+🟢 HIGH PRIORITY (Learn + Practice FIRST)
+
+* API Gateway
+* Service
+* API Communication
+* Database per Service
+* Message Queue
+* Event-Driven Architecture
+* Retry Mechanism
+* Timeout
+* Idempotency
+* Logging
+* Health Check
+* Data Consistency
+* Eventual Consistency
+* Distributed Locking
+* Caching (Redis)
+* Rate Limiting
+* Pub/Sub
+
+
+🟡 MEDIUM PRIORITY (After basics feel solid)
+
+* Saga Pattern
+* Compensation
+* Dead Letter Queue
+* Circuit Breaker
+* Throttling
+* Load Balancing
+* Horizontal Scaling
+
+🔵 LOW PRIORITY (Skip for now / learn later)
+
+* Service Discovery
+* Containerization (Docker)
+* Orchestration (Kubernetes)
+* Config Management
+* Authentication
+* Authorization
+* JWT
+* Monitoring
+* Tracing
+* CI/CD
+* Versioning
+* Backward Compatibility
+* Bulkhead Pattern
+* Sidecar Pattern
