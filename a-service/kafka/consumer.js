@@ -2,7 +2,7 @@ const { UpdateCounts } = require('../src/service');
 const getKafka = require('./client');
 
 const kafka = getKafka();
-const consumer = kafka.consumer({ groupId: 'service-a-group' });
+const consumer = kafka.consumer({ groupId: 'x-group-a' });
 
 const start = async () => {
   await consumer.connect();
@@ -15,12 +15,11 @@ const start = async () => {
   await consumer.run({
     eachMessage: async ({ topic, message }) => {
       const raw = message.value.toString();
-
       try {
         const data = JSON.parse(raw);
-        await Promise.all(data?.map(data_item=>{
-          return UpdateCounts(data_item?.item)
-        }))
+        const {item} = data||{}
+        console.log('item-counts', item, 'nly item')
+        await UpdateCounts(item)
       } catch {
         console.log('raw:', raw);
       }

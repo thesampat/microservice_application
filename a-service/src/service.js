@@ -30,9 +30,10 @@ const UpdateCounts=async(item)=>{
   try {
     let serviceitem = await ServiceModel.findOne({item:item})
     let counts_update = serviceitem?.counts||0 + 1
-    ServiceModel.updateOne({item:item}, {$set:{counts:counts_update}})
+    await ServiceModel.updateOne({item:item}, {$set:{counts:counts_update}}, {upsert:true})
     return counts_update
   } catch (error) {
+    console.log(error)
     console.log('something went wrong, please try again')
   }
     

@@ -1,9 +1,9 @@
 const { MongoClient } = require("mongodb");
 
 const urls = {
-  a: "mongodb://127.0.0.1:27017/service-a",
-  b: "mongodb://127.0.0.1:27017/service-b",
-  x: "mongodb://127.0.0.1:27017/service-x",
+  a: "mongodb://127.0.0.1:27010/service-a",
+  b: "mongodb://127.0.0.1:27010/service-b",
+  x: "mongodb://127.0.0.1:27010/service-x",
 };
 
 // 📖 READ

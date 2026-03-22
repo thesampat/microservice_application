@@ -1,14 +1,13 @@
 const express = require('express')
 const app = express()
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const SERVICES = require('./config/services');
 
 const port = 3000
 
 
 //proxies
-const aservice = createProxyMiddleware({ target: SERVICES.SERVICE_A, changeOrigin: true, pathRewrite:{'^/a' : '/'}});
-const bservice = createProxyMiddleware({ target: SERVICES.SERVICE_B, changeOrigin: true, pathRewrite:{'^/b' : '/'}});
+const aservice = createProxyMiddleware({ target: 'http://service-x:3001', changeOrigin: true, pathRewrite:{'^/a' : '/'}});
+const bservice = createProxyMiddleware({ target: 'http://service-x:3002', changeOrigin: true, pathRewrite:{'^/b' : '/'}});
 const xservice = createProxyMiddleware({ target: 'http://service-x:3003', changeOrigin: true, pathRewrite:{'^/x' : '/'}});
 
 

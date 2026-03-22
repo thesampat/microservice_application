@@ -31,6 +31,8 @@ services:
       - "3003:3003"
     env_file:
       - .env
+    depends_on:
+    - mongodb
     volumes:
       - ./x-service:/app
       - ./config:/app/config
@@ -63,5 +65,19 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092    # ✅ FIXED
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    
+      KAFKA_LOG4J_ROOT_LOGLEVEL: WARN
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    command: ["--bind_ip_all"]
+    ports:
+      - 27010:27017
+    volumes:
+            - mongodb:/data/db
+
+volumes:
+  mongodb:
+
   
