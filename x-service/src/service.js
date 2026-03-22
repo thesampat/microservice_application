@@ -3,7 +3,7 @@ const {publishEvent} = require('../kafka/publisher')
 
 const TestService=()=>{
     try {
-        publishEvent('from-service-x', {'data':"Data"})    
+        publishEvent('from-service-x', {'message-1':"Produceed from service-x"})    
     } catch (error) {
         console.log('error', error)
     }

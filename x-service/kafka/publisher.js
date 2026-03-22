@@ -12,6 +12,8 @@ const publishEvent=async(topic, data)=>{
       { value: JSON.stringify(data) }
     ],
   });
+
+  console.log('MESSAGE SENT', data)
 }
 
 module.exports = { publishEvent };
