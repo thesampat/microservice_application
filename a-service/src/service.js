@@ -26,12 +26,16 @@ const SetOrder=async(d)=>{
     
 }
 
-const UpdateService=async(data)=>{
-    let {service} = data||{}
-    let serviceitem = await ServiceModel.findOne({service:service})
+const UpdateCounts=async(item)=>{
+  try {
+    let serviceitem = await ServiceModel.findOne({item:item})
     let counts_update = serviceitem?.counts||0 + 1
-    ServiceModel.updateOne({service:service}, {$set:{counts:counts_update}})
+    ServiceModel.updateOne({item:item}, {$set:{counts:counts_update}})
     return counts_update
+  } catch (error) {
+    console.log('something went wrong, please try again')
+  }
+    
 }
 
-module.exports = {TestServiceA, CalledByBService, SetOrder, UpdateService}
+module.exports = {TestServiceA, CalledByBService, SetOrder, UpdateCounts}

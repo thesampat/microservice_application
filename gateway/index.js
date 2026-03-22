@@ -9,7 +9,7 @@ const port = 3000
 //proxies
 const aservice = createProxyMiddleware({ target: SERVICES.SERVICE_A, changeOrigin: true, pathRewrite:{'^/a' : '/'}});
 const bservice = createProxyMiddleware({ target: SERVICES.SERVICE_B, changeOrigin: true, pathRewrite:{'^/b' : '/'}});
-const xservice = createProxyMiddleware({ target: SERVICES.SERVICE_X, changeOrigin: true, pathRewrite:{'^/x' : '/'}});
+const xservice = createProxyMiddleware({ target: 'http://service-x:3003', changeOrigin: true, pathRewrite:{'^/x' : '/'}});
 
 
 app.get('/', (req, res) => { res.send('Hello World!') })

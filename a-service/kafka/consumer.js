@@ -1,3 +1,4 @@
+const { UpdateCounts } = require('../src/service');
 const getKafka = require('./client');
 
 const kafka = getKafka();
@@ -17,7 +18,9 @@ const start = async () => {
 
       try {
         const data = JSON.parse(raw);
-        console.log('Received:', data);
+        await Promise.all(data?.map(data_item=>{
+          return UpdateCounts(data_item?.item)
+        }))
       } catch {
         console.log('raw:', raw);
       }

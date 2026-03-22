@@ -19,12 +19,12 @@ async function readDatabase() {
   ]);
 
   const [aData, bData, xData] = await Promise.all([
-    clientA.db().collection("data").find().toArray(),
-    clientB.db().collection("data").find().toArray(),
-    clientX.db().collection("data").find().toArray()
+    clientA.db().collection("datas").find().toArray(),
+    clientB.db().collection("datas").find().toArray(),
+    clientX.db().collection("datas").find().toArray()
   ]);
 
-  console.log("\nservice-a =", aData);
+  console.log("service-a =", aData);
   console.log("service-b =", bData);
   console.log("service-x =", xData);
 
@@ -48,9 +48,9 @@ async function clearDatabase() {
   ]);
 
   await Promise.all([
-    clientA.db().collection("items").deleteMany({}),
-    clientB.db().collection("users").deleteMany({}),
-    clientX.db().collection("events").deleteMany({})
+    clientA.db().dropDatabase(),
+    clientB.db().dropDatabase(),
+    clientX.db().dropDatabase()
   ]);
 
   console.log("🧹 All databases cleared");
@@ -63,3 +63,4 @@ async function clearDatabase() {
 }
 
 readDatabase()
+// clearDatabase()

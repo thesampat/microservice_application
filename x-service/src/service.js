@@ -1,9 +1,7 @@
 const ServiceModel = require("./models")
-const {publishEvent} = require('../kafka/publisher')
 
 const TestService=()=>{
     try {
-        publishEvent('from-service-x', {'message-1':"Produceed from service-x"})    
     } catch (error) {
         console.log('error', error)
     }
@@ -11,11 +9,15 @@ const TestService=()=>{
     return 'X Service Successful'
 }
 
-const UpdateCalls=(user)=>{
-    let calldata = ServiceModel.findOne({user:user})
-    let callcounts = calldata?.calls||0 + 1
-    ServiceModel.updateOne({user:user}, {$set:{calls:callcounts}})
-    return callcounts
+const AddItem=async(user, item)=>{
+    try {
+        await ServiceModel.insertOne({user:user, item:item}) 
+        console.log('item added')   
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+    
 }
 
-module.exports = {TestService, UpdateCalls}
+module.exports = {TestService, AddItem}
