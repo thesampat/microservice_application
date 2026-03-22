@@ -1,5 +1,5 @@
 const { TestServiceB } = require('./service')
-const communicator = require('../../communicator/httpClient')
+const communicator = require('../communicator/httpClient')
 const { SafeCall, RetryService } = require('./utils')
 
 const TestServiceBController = (req, res) => {

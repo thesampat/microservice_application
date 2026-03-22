@@ -6,7 +6,7 @@ const ConnectDB = async () => {
         await mongoose.connect('mongodb://127.0.0.1:27017/service-b');
         console.log('Service B DB Connected')
     } catch (error) {
-        handleError(error);
+        // handleError(error);
     }
 }
 
@@ -15,7 +15,7 @@ const DisConnectDB = async () => {
         await mongoose.disconnect();
         console.log('Service B DB Disconnected')
     } catch (error) {
-        handleError(error);
+        // handleError(error);
     }
 }
 

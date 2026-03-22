@@ -1,6 +1,13 @@
 const ServiceModel = require("./models")
+const {publishEvent} = require('../kafka/publisher')
 
 const TestService=()=>{
+    try {
+        publishEvent('from-service-x', {'data':"Data"})    
+    } catch (error) {
+        console.log('error', error)
+    }
+    
     return 'X Service Successful'
 }
 

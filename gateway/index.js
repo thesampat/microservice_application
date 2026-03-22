@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const SERVICES = require('../config/services');
+const SERVICES = require('./config/services');
 
 const port = 3000
 

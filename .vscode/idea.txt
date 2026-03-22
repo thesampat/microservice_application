@@ -8,6 +8,21 @@ pub/sub through kafka
 service - a = ({counts:0, service:a}, {counts:0, service:b})
 service - b = ({user:a1, servicecalls:1})
 service - x = {item:a, user:a1}, {item:b,  user:a2}, {item:c, user:a3}, {item:a4}
-service - gateway - 
+service - gateway
+
+
+
+
+
 
 here service-x updated and service-a, and service-b are side effect
+
+
+service-x - service-a
+service-x - service-b
+
+service-a = service-b
+
+
+producer = service-x, service-a
+consumer = service-a, service-b
